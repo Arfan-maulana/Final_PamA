@@ -85,26 +85,49 @@ private fun MovieDetailContent(movie: Movie) {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    color = MaterialTheme.colorScheme.primary,
-                    shape = RoundedCornerShape(30.dp)
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.background)
+        ) {
+
+            Column {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = MaterialTheme.colorScheme.primary,
+                            shape = RoundedCornerShape(30.dp)
+                        )
+                        .padding(30.dp)
+                ) {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "Descripction",
+                        style = MaterialTheme.typography.titleLarge
+                            .copy(
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White
+                            ),
+                        textAlign = TextAlign.Center
+                    )
+                }
+                Text(
+                    text = movie.descripction,
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 16.dp, start = 8.dp, end = 8.dp),
+
+                    textAlign = TextAlign.Justify
                 )
-                .padding(30.dp)
-        ){
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                text = "Descripction",
-                style = MaterialTheme.typography.titleLarge
-                    .copy(
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White
-                    ),
-                textAlign = TextAlign.Center
-            )
+            }
         }
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .background(MaterialTheme.colorScheme.background)
+            .padding(8.dp)
+        )
     }
 }
 
