@@ -28,9 +28,10 @@ object Helper {
             }
         alertDialog.show()
     }
+
+    fun currencyFormat(price: Double): String{
+        return NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+            .format(price)
+    }
 }
 
-fun currencyFormat(price: Double): String{
-    return NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-        .format(price)
-}

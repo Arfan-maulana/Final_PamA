@@ -77,34 +77,10 @@ private fun MovieDetailContent(movie: Movie) {
                 .padding(vertical = 8.dp)
                 .fillMaxWidth()
         )
-        Text(
-            text = "Duration : ${movie.duration}",
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .fillMaxWidth()
-        )
-        Text(
-            text = "Release Date : ${movie.release_date}",
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .fillMaxWidth()
-        )
-        Text(
-            text = "Genre : ${movie.genre}",
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .fillMaxWidth()
-        )
-        Text(
-            text = "Price : ${movie.price}",
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .fillMaxWidth()
-        )
+        MovieDetailRow(label = "Duration", value =movie.duration )
+        MovieDetailRow(label = "Release Date", value =movie.release_date )
+        MovieDetailRow(label = "Genre", value =movie.genre )
+        MovieDetailRow(label = "price", value = Helper.currencyFormat(movie.price) )
     }
 }
 
