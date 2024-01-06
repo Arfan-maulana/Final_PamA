@@ -21,6 +21,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -59,8 +60,20 @@ class MovieDetail : ComponentActivity() {
                         MovieDetailContent(movie)
                     }
                     CustomTopBar()
-                    Button(onClick = { /*TODO*/ }) {
-                        
+                    Button(onClick = {
+                        val intent = Intent(this@MovieDetail, TiketOrder::class.java)
+                        intent.putExtra("movie",movie)
+                        this@MovieDetail.startActivity(intent)
+                    },
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .padding(vertical = 8.dp, horizontal = 14.dp)
+                            .fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.Blue)
+                        )
+
+                    {
+                       Text(text = "Order Tiket", color = Color.White)
                     }
                 }
             }
@@ -114,7 +127,7 @@ private fun MovieDetailContent(movie: Movie) {
                             color = MaterialTheme.colorScheme.primary,
                             shape = RoundedCornerShape(30.dp)
                         )
-                        .padding(30.dp)
+                        .padding(15.dp)
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
@@ -128,7 +141,7 @@ private fun MovieDetailContent(movie: Movie) {
                     )
                 }
                 Text(
-                    text = movie.descripction,
+                    text = movie.description,
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier
                         .fillMaxWidth()

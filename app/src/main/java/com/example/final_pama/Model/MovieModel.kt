@@ -12,7 +12,7 @@ class MovieModel (
 
 data class Movie(
     val created_at: String,
-    val descripction: String,
+    val description: String,
     val duration: String,
     val genre: String,
     val id: Int,
