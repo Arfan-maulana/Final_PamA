@@ -17,6 +17,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".TiketOrder"
+            android:exported="false"
+            android:label="@string/title_activity_tiket_order"
+            android:theme="@style/Theme.Final_PamA" />
+        <activity
             android:name=".MovieDetail"
             android:exported="false"
             android:label="@string/title_activity_movie_detail"
