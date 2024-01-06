@@ -11,6 +11,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -81,6 +82,29 @@ private fun MovieDetailContent(movie: Movie) {
         MovieDetailRow(label = "Release Date", value =movie.release_date )
         MovieDetailRow(label = "Genre", value =movie.genre )
         MovieDetailRow(label = "price", value = Helper.currencyFormat(movie.price) )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    color = MaterialTheme.colorScheme.primary,
+                    shape = RoundedCornerShape(30.dp)
+                )
+                .padding(30.dp)
+        ){
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = "Descripction",
+                style = MaterialTheme.typography.titleLarge
+                    .copy(
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    ),
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
 
