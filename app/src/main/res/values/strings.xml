@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Final_PamA</string>
+    <string name="nama">Nama</string>
+    <string name="title_activity_login_screen">LoginScreen</string>
+    <string name="title_activity_movie_detail">movieDetail</string>
+</resources>
