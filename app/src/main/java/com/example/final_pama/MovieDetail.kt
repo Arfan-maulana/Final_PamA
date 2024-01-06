@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -59,12 +60,15 @@ private fun MovieDetailContent(movie: Movie) {
         if (!movie.image.isNullOrEmpty()){
             model = "${Helper.BASE_IMAGE}${movie.image}"
         }
+
         AsyncImage(model = model,
             contentDescription =null,
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.FillWidth,
             modifier = Modifier
                 .fillMaxWidth()
+
         )
+
         Text(text = movie.title,
             style = MaterialTheme.typography.headlineSmall,
             fontWeight = FontWeight.Bold,
