@@ -1,4 +1,4 @@
-INAL PROJECT PENGEMBANGAN APLIKASI MOBILE 2024 Project Name: Aplikasi Tiket Bioskop
+FINAL PROJECT PENGEMBANGAN APLIKASI MOBILE 2024 Project Name: Aplikasi Tiket Bioskop
 
 Project Description: Aplikasi ini membantu memudahkan para pelanggan dalam melakukan pembelian tiket bioskop, sehingga mereka dapat menemukan dengan mudah menemukan film yang diinginkan. Aplikasi ini dikembangkan dengan menyimpan data di database. Proses lebih lanjut dapat dilihat dibawah ini.
 
