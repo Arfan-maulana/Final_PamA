@@ -41,5 +41,5 @@ interface ApiEndPoint {
     @POST("order/detail")
     fun createdOrderDetail(@Field("order_id") order: Int, @Field
         ("movie_schedule_id") schedulee: Int, @Field("seat_id") seat: Int, @Field
-                               ("movie_screening") date: String): retrofit2.Call<ResponseModel>
+                               ("date_screening") date: String): retrofit2.Call<ResponseModel>
 }

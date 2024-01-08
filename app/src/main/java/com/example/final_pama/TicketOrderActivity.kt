@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
@@ -135,7 +136,7 @@ class TicketOrderActivity : ComponentActivity(){
                         .fillMaxWidth()
                 ){
                     Text(
-                        text = "Grand Total: ${Helper.currencyFormat(viewModel.selectedDate.count() * movie.price)}")
+                        text = "Grand Total: ${Helper.currencyFormat(viewModel.selectedSeats.count() * movie.price)}")
                     Button(
                         onClick = {
                             onFinish(viewModel)
@@ -405,7 +406,7 @@ private fun TicketOrderContent(movieModel: MovieModel, seatModel: SeatModel?, vi
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(20.dp)
+                            .height(200.dp)
                             .padding(top = 8.dp)
                     ){
                         LazyVerticalGrid(
@@ -429,14 +430,15 @@ private fun TicketOrderContent(movieModel: MovieModel, seatModel: SeatModel?, vi
                                 )
                             }
                         }
-                        Spacer(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(100.dp)
-                                .background(MaterialTheme.colorScheme.background)
-                                .padding(8.dp))
                     }
                 }
+
+                Spacer(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(100.dp)
+                        .background(MaterialTheme.colorScheme.background)
+                        .padding(8.dp))
             }
         }
     }
@@ -615,29 +617,34 @@ fun MyDatePickerDialog(
         convertMillistoDate(it)
     } ?: ""
 
-    DatePickerDialog(
-        onDismissRequest = { onDismiss()},
-        confirmButton = {
-            Button(onClick = {
-                onDateSelected(selectedDate)
-                onDismiss()
+    Box (modifier = Modifier.fillMaxSize()) {
+
+        DatePickerDialog(
+            modifier = Modifier.width(350.dp),
+            onDismissRequest = { onDismiss()},
+            confirmButton = {
+                Button(onClick = {
+                    onDateSelected(selectedDate)
+                    onDismiss()
+                }
+                ) {
+                    Text(text = "OK")
+                }
+            },
+            dismissButton = {
+                Button(onClick = {
+                    onDismiss()
+                }) {
+                    Text(text = "Cancel")
+                }
             }
-            ) {
-                Text(text = "OK")
-            }
-        },
-        dismissButton = {
-            Button(onClick = {
-                onDismiss()
-            }) {
-                Text(text = "Cancel")
-            }
+        ) {
+            DatePicker(
+                state = datePickerState
+            )
         }
-    ) {
-        DatePicker(
-            state = datePickerState
-        )
     }
+
 }
 
 @Composable
