@@ -16,6 +16,7 @@ object Helper {
 
     val BASE_IMAGE = "http://192.168.77.7/bioskop_api/bioskop_api/public/images/"
     val BASE_URL = "http://192.168.77.7/bioskop_api/bioskop_api/public/api/"
+    val DATE_PATTERN = "EEEE, dd MMM yyyy"
 
     fun message(message: String, activity: Activity, action: Boolean = false){
         val alertDialog = AlertDialog.Builder(activity)
