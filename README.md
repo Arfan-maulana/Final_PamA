@@ -11,7 +11,8 @@ Detai Movie: Pada detail movie user dapat melihat detail dari sebuah movie.
 Pemesanan Tiket: Pada bagian ini user dapat memesan movie sesuai dengan yang user inginkan.
 Detail Tiket: User dapat melihat total dan detail tiket yang telah di pesan.
 Tiket Saya: User dapat melihat detail dari tiket yang telah di beli.
-Detail Pembagian: M Arfan Maulana:
+Detail Pembagian:
+M Arfan Maulana:
 
 Login
 Home
