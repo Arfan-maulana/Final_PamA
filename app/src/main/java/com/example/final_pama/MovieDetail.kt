@@ -61,7 +61,7 @@ class MovieDetail : ComponentActivity() {
                     }
                     CustomTopBar()
                     Button(onClick = {
-                        val intent = Intent(this@MovieDetail, TiketOrder::class.java)
+                        val intent = Intent(this@MovieDetail, TicketOrderActivity::class.java)
                         intent.putExtra("movie",movie)
                         this@MovieDetail.startActivity(intent)
                     },
