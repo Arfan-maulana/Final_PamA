@@ -110,7 +110,7 @@ private fun TicketCard(ticket: Ticket){
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable {
-                        val intent = Intent(context, MyTicket::class.java)
+                        val intent = Intent(context, TicketDetail::class.java)
                         intent.putExtra("ticket", ticket)
                         context.startActivity(intent)
                     }
@@ -178,7 +178,7 @@ private fun CustomTopBar(){
         contentAlignment = Alignment.TopCenter
     ){
         Text(
-            text = "Movie List",
+            text = "My Ticket",
             style = MaterialTheme.typography.headlineMedium.copy(
                 fontWeight = FontWeight.Bold,
                 color = Color.White

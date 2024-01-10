@@ -17,6 +17,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".TicketDetail"
+            android:exported="false"
+            android:label="@string/title_activity_ticket_detail"
+            android:theme="@style/Theme.Final_PamA" />
+        <activity
+            android:name=".TiketDetil"
+            android:exported="false"
+            android:label="@string/title_activity_tiket_detil"
+            android:theme="@style/Theme.Final_PamA" />
+        <activity
+            android:name=".TiketDetaik"
+            android:exported="false"
+            android:label="@string/title_activity_tiket_detaik"
+            android:theme="@style/Theme.Final_PamA" />
+        <activity
             android:name=".MyTicket"
             android:exported="false"
             android:label="@string/title_activity_my_ticket"
