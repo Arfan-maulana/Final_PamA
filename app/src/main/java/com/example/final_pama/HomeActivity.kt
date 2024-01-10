@@ -16,6 +16,8 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.typography
@@ -53,9 +55,28 @@ class HomeActivity : ComponentActivity() {
         setContent {
             Final_PamATheme {
                 // A surface container using the 'background' color from the theme
-                Column {
-                   CustomTopBar()
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background)
+                ) {
                     MovieGrid()
+                    CustomTopBar()
+
+                    Button(
+                        onClick ={
+                            val intent = Intent(
+                                this@HomeActivity,MyTicket::class.java)
+                            this@HomeActivity.startActivity(intent)
+                        },
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .padding(vertical = 8.dp, horizontal = 16.dp)
+                            .fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(containerColor = 
+                        Color.Black)
+                        ) {
+                        Text(text = "My Tiket", color = Color.White)
+                    }
                 }
             }
         }
