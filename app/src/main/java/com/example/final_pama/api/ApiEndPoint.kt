@@ -6,6 +6,7 @@ import com.example.final_pama.Model.MovieModel
 import com.example.final_pama.Model.OrderModel
 import com.example.final_pama.Model.ResponseModel
 import com.example.final_pama.Model.SeatModel
+import com.example.final_pama.Model.TicketModel
 import com.example.final_pama.Model.UserModel
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -42,4 +43,7 @@ interface ApiEndPoint {
     fun createdOrderDetail(@Field("order_id") order: Int, @Field
         ("movie_schedule_id") schedulee: Int, @Field("seat_id") seat: Int, @Field
                                ("date_screening") date: String): retrofit2.Call<ResponseModel>
+
+    @GET("ticket")
+    fun getTicket(): retrofit2.Call<TicketModel>
 }
