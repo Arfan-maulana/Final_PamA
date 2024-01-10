@@ -95,6 +95,7 @@ class HomeActivity : ComponentActivity() {
             columns =GridCells.Fixed(2),
             modifier = Modifier
                 .padding(26.dp)
+                .padding(vertical = 40.dp)
 
         ){
             items(movies){movie ->
