@@ -1,11 +1,13 @@
 package com.example.final_pama.Model
 
+import java.io.Serializable
+
 data class TicketModel(
-    val ticket: List<Ticket>
+    val tickets: List<Ticket>
 )
 
 data class Ticket(
-    val movie_tittle: String,
+    val movie_title: String,
     val movie_price: Double,
     val movie_image: String,
     val cinema: String,
@@ -14,4 +16,4 @@ data class Ticket(
     val start_time: String,
     val end_time: String,
     val status: String,
-)
+): Serializable
