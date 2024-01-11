@@ -1,10 +1,14 @@
 package com.example.final_pama
 
+import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,12 +21,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import com.example.final_pama.Model.Ticket
 import com.example.final_pama.ui.theme.Final_PamATheme
+import java.io.Serializable
 
 class TicketDetail : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +50,54 @@ class TicketDetail : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+private fun TicketDetailContent(ticket: Ticket){
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ){
+        var model: Any = R.drawable.baseline_movie_24
+        if (!ticket.movie_image.isNullOrEmpty()){
+            model = "${Helper.BASE_IMAGE}${ticket.movie_image}"
+        }
+        AsyncImage(
+            model = model,
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier
+                .fillMaxWidth()
+        )
+
+        Text(
+            text = ticket.movie_title,
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .fillMaxWidth()
+        )
+    }
+}
+@Composable
+private fun TicketDetailRow(label:String, value: String){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp)
+    ){
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.weight(1f)
+        )
+
+        Text(
+            text = value,
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.weight(1f)
+        )
+    }
+
 }
 
 @Composable
@@ -82,5 +133,13 @@ private fun CustomTopBar(){
             textAlign = TextAlign.Center
         )
     }
+}
+
+private fun <T : Serializable> getSerializable(activity: Activity, name: String, clazz: Class<T>): T
+{
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+        activity.intent.getSerializableExtra(name, clazz)!!
+    else
+        activity.intent.getSerializableExtra(name) as T
 }
 
