@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,6 +32,8 @@ import coil.compose.AsyncImage
 import com.example.final_pama.Model.Ticket
 import com.example.final_pama.ui.theme.Final_PamATheme
 import java.io.Serializable
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class TicketDetail : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,6 +79,52 @@ private fun TicketDetailContent(ticket: Ticket){
                 .padding(vertical = 8.dp)
                 .fillMaxWidth()
         )
+        TicketDetailRow("Cinema", ticket.cinema)
+        TicketDetailRow("Seat", ticket.seat.toString())
+        TicketDetailRow("Price", Helper.currencyFormat(ticket.movie_price))
+        TicketDetailRow(
+            "Data", SimpleDateFormat(Helper.DATE_PATTERN, Locale.getDefault())
+                .format(
+                    SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(ticket.date)
+                )
+        );
+        TicketDetailRow("Time", "${ticket.start_time} - ${ticket.end_time}")
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        var color = Color(0xFF65B741)
+        if (ticket.status == "Expired"){
+            color = Color(0xFFBB2525)
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    color = color,
+                    shape = RoundedCornerShape(20.dp)
+                )
+                .padding(12.dp)
+        ){
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = ticket.status,
+                style = MaterialTheme.typography.titleLarge
+                    .copy(
+                        fontWeight = FontWeight.Bold,
+                        color = androidx.compose.ui.graphics.Color.White
+                    ),
+                textAlign = TextAlign.Center
+            )
+        }
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp)
+                .background(MaterialTheme.colorScheme.background)
+                .padding(8.dp)
+        )
     }
 }
 @Composable
@@ -96,6 +145,7 @@ private fun TicketDetailRow(label:String, value: String){
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.weight(1f)
         )
+
     }
 
 }
