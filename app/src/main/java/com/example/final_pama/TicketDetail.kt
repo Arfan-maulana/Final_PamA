@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -38,19 +40,28 @@ import java.util.Locale
 class TicketDetail : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val ticket = getSerializable(this, "ticket", Ticket::class.java)
         setContent {
             Final_PamATheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                  CustomTopBar()
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ){
+                    Column(
+                        modifier = Modifier
+                            .verticalScroll(rememberScrollState())
+                            .padding(vertical = 42.dp)
+                    ){
+                        TicketDetailContent(ticket)
+                    }
+                    CustomTopBar()
                 }
+            }
             }
         }
     }
-}
+
 
 @Composable
 private fun TicketDetailContent(ticket: Ticket){
